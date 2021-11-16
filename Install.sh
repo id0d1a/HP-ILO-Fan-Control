@@ -1,5 +1,4 @@
-  GNU nano 4.8                                                                                       Install.sh                                                                                        Modified
-##!/bin/bash
+#!/bin/bash
 echo "You are about to Download/Install the required items for the HP ILO Fan control, "
 echo "Do you accept that your are about to install? [yes] or [no] :"
 read input
