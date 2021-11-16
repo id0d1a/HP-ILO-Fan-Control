@@ -14,3 +14,7 @@ https://www.reddit.com/r/homelab/comments/hix44v/silence_of_the_fans_pt_2_hp_ilo
 5. Reboot into ESXI
 6. Run install script
 7. edit files
+
+### Install Command
+
+```wget https://raw.githubusercontent.com/thomaswilbur/HP-ILO-Fan-Control/main/Install.sh```
