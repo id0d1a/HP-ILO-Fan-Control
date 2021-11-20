@@ -22,7 +22,10 @@ sshpass -p $PASSWORD ssh $USERNAME@$ILOIP show /system1/sensor3 > temp.txt
 T2CLEAN=$(grep --color=never -Ihr "CurrentReading" temp.txt | xargs -d '\r')
 T2=$(echo "${T2CLEAN/    CurrentReading=/}" | xargs)
 rm -rf temp.txt
-
+sshpass -p $PASSWORD ssh $USERNAME@$ILOIP show /system1/sensor25 > temp.txt
+T2CLEAN=$(grep --color=never -Ihr "CurrentReading" temp.txt | xargs -d '\r')
+RAID=$(echo "${T2CLEAN/    CurrentReading=/}" | xargs)
+rm -rf temp.txt
 
 echo "CPU 1 Temp $T1 C"
 
@@ -91,4 +94,24 @@ else
         sshpass -p $PASSWORD ssh $USERNAME@$ILOIP 'fan p 0 max 30'
         sshpass -p $PASSWORD ssh $USERNAME@$ILOIP 'fan p 1 max 30'
         sshpass -p $PASSWORD ssh $USERNAME@$ILOIP 'fan p 2 max 30'
+fi
+
+echo "RAID Temp $RAID C"
+if [[ $T2 > 90 ]]
+   then
+        sshpass -p $PASSWORD ssh $USERNAME@$ILOIP 'fan p 5 max 255'
+elif [[ $T2 > 80 ]]
+    then
+        sshpass -p $PASSWORD ssh $USERNAME@$ILOIP 'fan p 5 max 39'
+elif [[ $T2 > 78 ]]
+    then
+        sshpass -p $PASSWORD ssh $USERNAME@$ILOIP 'fan p 5 max 39'
+elif [[ $T2 > 75 ]]
+    then
+        sshpass -p $PASSWORD ssh $USERNAME@$ILOIP 'fan p 5 max 38'
+elif [[ $T2 > 70 ]]
+    then
+        sshpass -p $PASSWORD ssh $USERNAME@$ILOIP 'fan p 5 max 34'
+else
+        sshpass -p $PASSWORD ssh $USERNAME@$ILOIP 'fan p 5 max 30'
 fi
