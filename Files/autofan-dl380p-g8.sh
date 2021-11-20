@@ -97,21 +97,21 @@ else
 fi
 
 echo "RAID Temp $RAID C"
-if [[ $RAID > 90 ]]
+if [[ $RAID > 97 ]]
    then
         sshpass -p $PASSWORD ssh $USERNAME@$ILOIP 'fan p 5 max 255'
-elif [[ $RAID > 80 ]]
+elif [[ $RAID > 94 ]]
     then
-        sshpass -p $PASSWORD ssh $USERNAME@$ILOIP 'fan p 5 max 39'
-elif [[ $RAID > 78 ]]
+        sshpass -p $PASSWORD ssh $USERNAME@$ILOIP 'fan p 5 max 128'
+elif [[ $RAID > 93 ]]
     then
-        sshpass -p $PASSWORD ssh $USERNAME@$ILOIP 'fan p 5 max 39'
-elif [[ $RAID > 75 ]]
+        sshpass -p $PASSWORD ssh $USERNAME@$ILOIP 'fan p 5 max 95'
+elif [[ $RAID > 92 ]]
     then
-        sshpass -p $PASSWORD ssh $USERNAME@$ILOIP 'fan p 5 max 38'
-elif [[ $RAID > 70 ]]
+        sshpass -p $PASSWORD ssh $USERNAME@$ILOIP 'fan p 5 max 90'
+elif [[ $RAID > 91 ]]
     then
-        sshpass -p $PASSWORD ssh $USERNAME@$ILOIP 'fan p 5 max 34'
+        sshpass -p $PASSWORD ssh $USERNAME@$ILOIP 'fan p 5 max 35'
 else
-        sshpass -p $PASSWORD ssh $USERNAME@$ILOIP 'fan p 5 max 30'
+        sshpass -p $PASSWORD ssh $USERNAME@$ILOIP 'fan p 5 max 35'
 fi
