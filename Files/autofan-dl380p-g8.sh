@@ -23,9 +23,9 @@ T2CLEAN=$(grep --color=never -Ihr "CurrentReading" temp.txt | xargs -d '\r')
 T2=$(echo "${T2CLEAN/    CurrentReading=/}" | xargs)
 rm -rf temp.txt
 
-echo "==============="
+
 echo "CPU 1 Temp $T1 C"
-echo "==============="
+
 
 if [[ $T1 > 67 ]]
    then
@@ -59,9 +59,7 @@ else
         sshpass -p $PASSWORD ssh $USERNAME@$ILOIP 'fan p 5 max 30'
 fi
 
-echo "==============="
 echo "CPU 2 Temp $T2 C"
-echo "==============="
 
 if [[ $T2 > 67 ]]
    then
