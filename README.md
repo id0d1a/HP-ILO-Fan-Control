@@ -29,5 +29,12 @@ This allows outgoing http and ssh traffic. Not sure why this is disabled by defa
 7. Run a simple test
 
 ```
-mkdir ~/test && wget 
+mkdir ~/test && wget https://raw.githubusercontent.com/thomaswilbur/HP-ILO-Fan-Control/main/Files/autofan.sh --no-check-certificate
+```
+
+8. Edit autofan.sh with your credentials
+9. Run it!
+
+```
+sh autofan.sh
 ```
