@@ -37,10 +37,10 @@ sshpass -p $PASSWORD ssh -oStrictHostKeyChecking=no -oKexAlgorithms=+diffie-hell
 T2CLEAN=$(grep -Ihr "CurrentReading" temp.txt)
 T2=$(echo "${T2CLEAN/    CurrentReading=/}" | xargs)
 rm -rf temp.txt
-sshpass -p $PASSWORD ssh -oStrictHostKeyChecking=no -oKexAlgorithms=+diffie-hellman-group14-sha1 $USERNAME@$ILOIP show /system1/sensor25 > temp.txt
-T2CLEAN=$(grep -Ihr "CurrentReading" temp.txt)
-RAID=$(echo "${T2CLEAN/    CurrentReading=/}" | xargs)
-rm -rf temp.txt
+T1=${T1//$'\n'/}
+T2=${T2//$'\n'/}
+T1=${T1%$'\n'}
+T2=${T2%$'\n'}
 
 
 echo "CPU 1 Temp $T1 C"
