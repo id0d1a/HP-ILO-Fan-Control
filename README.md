@@ -1,4 +1,5 @@
-# HP-ILO-Fan-Control
+# HP ILO FAN CONTROL ESXI EDITION
+TESTED ESXI 7 WITH THIS MOD
 Uses a Custom ROM for The Hp ILO adapter
 
 ### Reddit Post
@@ -12,6 +13,6 @@ https://www.reddit.com/r/homelab/comments/hix44v/silence_of_the_fans_pt_2_hp_ilo
 3. Flash new ILO
 4. Write ILO creds down & ensure ssh is enabled
 5. Reboot into ESXI
-6.
+6. Run both of these commands
 ```esxcli network firewall ruleset set -e true -r httpClient```
 ```esxcli network firewall ruleset set -e true -r sshClient```
