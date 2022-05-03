@@ -21,8 +21,8 @@ pwdlocation=$(pwd)
 cd /tmp
 wget https://raw.githubusercontent.com/thomaswilbur/HP-ILO-Fan-Control/main/Files/sshpass --no-check-certificate
 mv sshpass /usr/bin/sshpass
-chmod +x sshpass
-cd pwdlocation
+chmod +x /usr/bin/sshpass
+cd $pwdlocation
     echo "sshpass loaded."
 fi
 
