@@ -12,9 +12,6 @@ https://www.reddit.com/r/homelab/comments/hix44v/silence_of_the_fans_pt_2_hp_ilo
 3. Flash new ILO
 4. Write ILO creds down & ensure ssh is enabled
 5. Reboot into ESXI
-6. Run install script
-7. edit files
-
-### Install Command
-
-```wget https://raw.githubusercontent.com/thomaswilbur/HP-ILO-Fan-Control/main/Install.sh```
+6.
+```esxcli network firewall ruleset set -e true -r httpClient```
+```esxcli network firewall ruleset set -e true -r sshClient```
