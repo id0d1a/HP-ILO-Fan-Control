@@ -42,12 +42,19 @@ sshpass -p $PASSWORD ssh -oStrictHostKeyChecking=no -oKexAlgorithms=+diffie-hell
 T2CLEAN=$(grep -Ihr "CurrentReading" temp.txt)
 RAID=$(echo "${T2CLEAN/    CurrentReading=/}" | xargs)
 rm -rf temp.txt
+# Ensure no spaces, no new line char.
 T1=${T1//$'\n'/}
 T2=${T2//$'\n'/}
 RAID=${RAID//$'\n'/}
 T1=${T1%$'\n'}
 T2=${T2%$'\n'}
 RAID=${RAID%$'\n'}
+T1=$(echo T1 | sed -r 's/( )+//g')
+T2=$(echo T2 | sed -r 's/( )+//g')
+RAID=$(echo RAID | sed -r 's/( )+//g')
+T1=$(expr $T1 + 0)
+T2=$(expr $T2 + 0)
+RAID=$(expr $RAID + 0)
 
 echo "CPU 1 Temp $T1 C"
 
