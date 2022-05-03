@@ -37,10 +37,9 @@ sshpass -p $PASSWORD ssh -oStrictHostKeyChecking=no -oKexAlgorithms=+diffie-hell
 T2CLEAN=$(grep -Ihr "CurrentReading" temp.txt)
 T2=$(echo "${T2CLEAN/    CurrentReading=/}" | xargs)
 rm -rf temp.txt
-T1=${T1//$'\n'/}
-T2=${T2//$'\n'/}
-T1=${T1%$'\n'}
-T2=${T2%$'\n'}
+# Ensure no spaces, no new line char.
+T1=$(echo $T1 | sed 's/[^0-9]*//g')
+T2=$(echo $T2 | sed 's/[^0-9]*//g')
 
 
 echo "CPU 1 Temp $T1 C"
