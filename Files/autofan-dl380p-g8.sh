@@ -1,4 +1,13 @@
 #!/bin/bash
+#
+# crontab -l > mycron
+# echo "#" >> mycron
+# echo "# At every 2nd minute" >> mycron
+# echo "*/1 * * * * /bin/bash /autofan.sh >> /tmp/cron.log" >> mycron
+# crontab mycron
+# rm mycron
+# chmod +x /autofan.sh
+#
 
 PASSWORD="YOURILOPASSWORD"
 USERNAME="YOURILOUSER"
