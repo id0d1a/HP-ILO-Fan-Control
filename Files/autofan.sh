@@ -12,6 +12,20 @@
 PASSWORD="your password"
 USERNAME="your username"
 ILOIP="your ilo ip"
+
+FILE="/usr/bin/sshpass"
+if [ -f "$FILE" ]; then
+    echo "sshpass already loaded."
+else 
+pwdlocation=$(pwd)
+cd /tmp
+wget https://github.com/thomaswilbur/HP-ILO-Fan-Control/blob/main/Files/sshpass?raw=true
+mv sshpass?raw=true /usr/bin/sshpass
+chmod +x sshpass
+cd pwdlocation
+    echo "sshpass loaded."
+fi
+
 #T1="$(sensors -Aj coretemp-isa-0000 | jq '.[][] | to_entries[] | select(.key | endswith("input")) | .value' | sort -rn | head -n1)"
 #T2="$(sensors -Aj coretemp-isa-0001 | jq '.[][] | to_entries[] | select(.key | endswith("input")) | .value' | sort -rn | head -n1)"
 sshpass -p $PASSWORD ssh $USERNAME@$ILOIP show /system1/sensor2 > temp.txt
