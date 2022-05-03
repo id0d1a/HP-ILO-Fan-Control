@@ -6,6 +6,11 @@ Uses a Custom ROM for The Hp ILO adapter
 
 https://www.reddit.com/r/homelab/comments/hix44v/silence_of_the_fans_pt_2_hp_ilo_4_273_now_with/
 
+### Original Repo
+
+https://github.com/That-Guy-Jack/HP-ILO-Fan-Control
+
+
 ### Steps
 
 1. Create Ubuntu ISO
