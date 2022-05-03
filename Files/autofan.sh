@@ -31,17 +31,15 @@ esxcli network firewall ruleset set -e true -r sshClient
 #T2="$(sensors -Aj coretemp-isa-0001 | jq '.[][] | to_entries[] | select(.key | endswith("input")) | .value' | sort -rn | head -n1)"
 sshpass -p $PASSWORD ssh -oStrictHostKeyChecking=no -oKexAlgorithms=+diffie-hellman-group14-sha1 $USERNAME@$ILOIP show /system1/sensor2 > temp.txt
 T1CLEAN=$(grep -Ihr "CurrentReading" temp.txt)
-T1CLEAN=$(echo $T1CLEAN | sed 's/\n//g')
+
 T1=$(echo "${T1CLEAN/    CurrentReading=/}" | xargs)
 rm -rf temp.txt
 sshpass -p $PASSWORD ssh -oStrictHostKeyChecking=no -oKexAlgorithms=+diffie-hellman-group14-sha1 $USERNAME@$ILOIP show /system1/sensor3 > temp.txt
 T2CLEAN=$(grep -Ihr "CurrentReading" temp.txt)
-T2CLEAN=$(echo $T2CLEAN | sed 's/\n//g')
+
 T2=$(echo "${T2CLEAN/    CurrentReading=/}" | xargs)
 rm -rf temp.txt
-# Ensure no spaces, no new line char.
-T1=$(echo $T1 | sed 's/[^0-9]*//g')
-T2=$(echo $T2 | sed 's/[^0-9]*//g')
+
 
 
 echo "CPU 1 Temp $T1 C"
