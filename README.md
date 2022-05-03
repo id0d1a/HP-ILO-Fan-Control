@@ -19,5 +19,15 @@ https://github.com/That-Guy-Jack/HP-ILO-Fan-Control
 4. Write ILO creds down & ensure ssh is enabled
 5. Reboot into ESXI
 6. Run both of these commands
+
 ```esxcli network firewall ruleset set -e true -r httpClient```
+
 ```esxcli network firewall ruleset set -e true -r sshClient```
+
+This allows outgoing http and ssh traffic. Not sure why this is disabled by default.
+
+7. Run a simple test
+
+```
+mkdir ~/test && wget 
+```
