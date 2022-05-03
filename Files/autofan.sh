@@ -19,8 +19,8 @@ else
 esxcli network firewall ruleset set -e true -r httpClient
 pwdlocation=$(pwd)
 cd /tmp
-wget https://github.com/thomaswilbur/HP-ILO-Fan-Control/blob/main/Files/sshpass?raw=true --no-check-certificate
-mv sshpass?raw=true /usr/bin/sshpass
+wget https://raw.githubusercontent.com/thomaswilbur/HP-ILO-Fan-Control/main/Files/sshpass --no-check-certificate
+mv sshpass /usr/bin/sshpass
 chmod +x sshpass
 cd pwdlocation
     echo "sshpass loaded."
