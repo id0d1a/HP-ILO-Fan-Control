@@ -2,6 +2,11 @@
 TESTED ESXI 7 WITH THIS MOD
 Uses a Custom ROM for The Hp ILO adapter
 
+** This is not a service yet, it has to be run manually in a ESXI shell but its progress. **
+
+This script has a bunch of customizations and redone code of HP ILO Fan Control. ESXi is very stripped down and hard to work with so many code from the original repository had to be updated for it to work. The script will load sshpass binary onto your system which allows the script to be a hands-free script.
+
+
 ### Reddit Post
 
 https://www.reddit.com/r/homelab/comments/hix44v/silence_of_the_fans_pt_2_hp_ilo_4_273_now_with/
