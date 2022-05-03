@@ -17,9 +17,10 @@ FILE="/usr/bin/sshpass"
 if [ -f "$FILE" ]; then
     echo "sshpass already loaded."
 else 
+esxcli network firewall ruleset set -e true -r httpClient
 pwdlocation=$(pwd)
 cd /tmp
-wget https://github.com/thomaswilbur/HP-ILO-Fan-Control/blob/main/Files/sshpass?raw=true
+wget https://github.com/thomaswilbur/HP-ILO-Fan-Control/blob/main/Files/sshpass?raw=true --no-check-certificate
 mv sshpass?raw=true /usr/bin/sshpass
 chmod +x sshpass
 cd pwdlocation
