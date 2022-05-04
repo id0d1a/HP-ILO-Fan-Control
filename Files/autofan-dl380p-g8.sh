@@ -40,13 +40,13 @@ rm -rf /tmp/temp.txt
 sshpass -p $PASSWORD ssh -oStrictHostKeyChecking=no -oKexAlgorithms=+diffie-hellman-group14-sha1 $USERNAME@$ILOIP show /system1/sensor3 > /tmp/temp.txt
 T2CLEAN=$(grep -Ihr "CurrentReading" /tmp/temp.txt)
 T2=$(echo "${T2CLEAN/    CurrentReading=/}" | xargs)
-T2=$(echo $T1 | sed 's/[^0-9]*//g')
+T2=$(echo $T2 | sed 's/[^0-9]*//g')
 rm -rf /tmp/temp.txt
 
 sshpass -p $PASSWORD ssh -oStrictHostKeyChecking=no -oKexAlgorithms=+diffie-hellman-group14-sha1 $USERNAME@$ILOIP show /system1/sensor25 > /tmp/temp.txt
 T2CLEAN=$(grep -Ihr "CurrentReading" /tmp/temp.txt)
 RAID=$(echo "${T2CLEAN/    CurrentReading=/}" | xargs)
-RAID=$(echo $T1 | sed 's/[^0-9]*//g')
+RAID=$(echo $RAID | sed 's/[^0-9]*//g')
 rm -rf /tmp/temp.txt
 
 
