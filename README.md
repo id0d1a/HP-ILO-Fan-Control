@@ -6,6 +6,9 @@ Uses a Custom ROM for The Hp ILO adapter
 
 This script has a bunch of customizations and redone code of HP ILO Fan Control. ESXi is very stripped down and hard to work with so many code from the original repository had to be updated for it to work. The script will load sshpass binary onto your system which allows the script to be a hands-free script.
 
+![Screenshot](https://github.com/thomaswilbur/HP-ILO-Fan-Control/blob/main/Screen%20Shot%202022-05-03%20at%209.16.13%20PM.png?raw=true)
+
+
 
 ### Reddit Post
 
