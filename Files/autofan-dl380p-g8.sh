@@ -30,21 +30,20 @@ fi
 esxcli network firewall ruleset set -e true -r sshClient
 #T1="$(sensors -Aj coretemp-isa-0000 | jq '.[][] | to_entries[] | select(.key | endswith("input")) | .value' | sort -rn | head -n1)"
 #T2="$(sensors -Aj coretemp-isa-0001 | jq '.[][] | to_entries[] | select(.key | endswith("input")) | .value' | sort -rn | head -n1)"
-sshpass -p $PASSWORD ssh -oStrictHostKeyChecking=no -oKexAlgorithms=+diffie-hellman-group14-sha1 $USERNAME@$ILOIP show /system1/sensor2 > temp.txt
-T1CLEAN=$(grep -Ihr "CurrentReading" temp.txt)
-
+sshpass -p $PASSWORD ssh -oStrictHostKeyChecking=no -oKexAlgorithms=+diffie-hellman-group14-sha1 $USERNAME@$ILOIP show /system1/sensor2 > /tmp/temp.txt
+T1CLEAN=$(grep -Ihr "CurrentReading" /tmp/temp.txt)
 T1=$(echo "${T1CLEAN/    CurrentReading=/}" | xargs)
-rm -rf temp.txt
-sshpass -p $PASSWORD ssh -oStrictHostKeyChecking=no -oKexAlgorithms=+diffie-hellman-group14-sha1 $USERNAME@$ILOIP show /system1/sensor3 > temp.txt
-T2CLEAN=$(grep -Ihr "CurrentReading" temp.txt)
+rm -rf /tmp/temp.txt
 
+sshpass -p $PASSWORD ssh -oStrictHostKeyChecking=no -oKexAlgorithms=+diffie-hellman-group14-sha1 $USERNAME@$ILOIP show /system1/sensor3 > /tmp/temp.txt
+T2CLEAN=$(grep -Ihr "CurrentReading" /tmp/temp.txt)
 T2=$(echo "${T2CLEAN/    CurrentReading=/}" | xargs)
-rm -rf temp.txt
-sshpass -p $PASSWORD ssh -oStrictHostKeyChecking=no -oKexAlgorithms=+diffie-hellman-group14-sha1 $USERNAME@$ILOIP show /system1/sensor25 > temp.txt
-T2CLEAN=$(grep -Ihr "CurrentReading" temp.txt)
+rm -rf /tmp/temp.txt
 
+sshpass -p $PASSWORD ssh -oStrictHostKeyChecking=no -oKexAlgorithms=+diffie-hellman-group14-sha1 $USERNAME@$ILOIP show /system1/sensor25 > /tmp/temp.txt
+T2CLEAN=$(grep -Ihr "CurrentReading" /tmp/temp.txt)
 RAID=$(echo "${T2CLEAN/    CurrentReading=/}" | xargs)
-rm -rf temp.txt
+rm -rf /tmp/temp.txt
 
 
 echo "CPU 1 Temp $T1 C"
