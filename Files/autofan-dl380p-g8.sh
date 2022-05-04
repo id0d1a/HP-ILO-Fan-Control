@@ -14,6 +14,7 @@ USERNAME="YOURILOUSER"
 ILOIP="YOURILOIP"
 
 FILE="/usr/bin/sshpass"
+echo "ESXI HP iLO Fan Control Utility - By Thomas Wilbur"
 if [ -f "$FILE" ]; then
     echo "sshpass already loaded."
 else 
